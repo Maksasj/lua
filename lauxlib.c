@@ -801,7 +801,10 @@ LUALIB_API int luaL_loadfilex (lua_State *L, const char *filename, const char *m
 
     fclose(file);
 
-    return luaL_loadstring(L, content);
+    int status = luaL_loadstring(L, content);
+    free(content);
+  
+    return status;
 }
 
 
